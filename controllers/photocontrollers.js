@@ -6,9 +6,8 @@ exports.getAllPhotos = async (req, res) => {
 
     const page = req.query.page || 1;
     const photosPerPage = 1;
-
-    const totalPhotos = await Photo.find().countDocuments();
-
+    
+    const totalPhotos = await Photo.find().countDocuments({}, {maxTimeMS: 60000});
     const photos = await Photo.find({})
     .sort("-dataCreated")
     .skip((page-1) * photosPerPage) 
@@ -19,7 +18,7 @@ exports.getAllPhotos = async (req, res) => {
          current: page,
          pages:Math.ceil(totalPhotos / photosPerPage)
      })
-
+    
     // console.log(req.query)
     // const photos = await Photo.find({}).sort("-dataCreated")
     // res.render('index', {
