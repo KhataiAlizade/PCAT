@@ -8,9 +8,9 @@ const photoController = require('./controllers/photocontrollers')
 const pageController = require('./controllers/pagecontroller')
 //connect DB
 mongoose.connect("mongodb+srv://xataializade01:xetai12345@cluster0.a2dghd0.mongodb.net/pcat-db?retryWrites=true&w=majority", {
- useNewUrlParser: true,
+    useNewUrlParser: true,
  useUnifiedTopology: true,
- serverSelectionTimeoutMS: 5000 // increase the server selection timeout to 5 seconds
+ serverSelectionTimeoutMS: 5000,
 })
 .then(()=> {
     console.log("DB CONNECTED!")
