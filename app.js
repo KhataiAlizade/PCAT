@@ -11,6 +11,11 @@ const pageController = require('./controllers/pagecontroller')
 
 mongoose.connect("mongodb+srv://xataializade01:xetai12345@cluster0.a2dghd0.mongodb.net/pcat-db?retryWrites=true&w=majority", {
  serverSelectionTimeoutMS: 5000,
+}).then(()=> {
+    console.log("DB CONNECTED!")
+})
+.catch((error) => {
+    console.log(error)
 })
 
 mongoose.connection.on('connected', () => {
@@ -24,6 +29,9 @@ mongoose.connection.on('error', (err) => {
 mongoose.connection.on('disconnected', () => {
     console.log('MongoDB disconnected');
 });
+
+
+
 
 
 //Template ENGINE
